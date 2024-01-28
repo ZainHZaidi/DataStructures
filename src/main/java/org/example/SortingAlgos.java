@@ -9,7 +9,7 @@ Insertion :
 Shell : 
 Recursive Comparison Sorts
 Mergesort : 
-Quicksort
+Quicksort :
 Heapsort
 Non-Comparison Sorts
 Counting Sort
@@ -208,32 +208,121 @@ public class SortingAlgos {
 
 
     static int partition(int[] arr, int start, int stop, int pivot){
+        for (int x : arr) {
+            System.out.println(x + " " + 1);
+        }
+        System.out.println("[" + " " + start + " " + stop + " " + arr[pivot]);
+        int temp = arr[pivot];
+        arr[pivot] = arr[stop];
+        arr[stop] = temp;
+        pivot = stop;
+
+        int i = start;
+        for(int j = start; j < stop; j++){
+            if(arr[j] < arr[pivot]){
+                temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+                i++;
+            }
+        }
+        temp = arr[pivot];
+        arr[pivot] = arr[i];
+        arr[i] = temp;
+
+        return i;
+    }
+
+    static void quicksort(int[] arr, int start, int stop){
+        if(stop > start){
+            int pivot = partition(arr, start, stop, (stop-start)/2 + start);
+            quicksort(arr, start, pivot - 1);
+            quicksort(arr, pivot + 1, stop);
+        }
+    }
+
+    public static int[] heapify(int[] list) {
+        for (int i = list.length/2 - 1; i >= 0; i--) {
+            heapifyHelper(list, i);
+        }
+        return list;
+    }
+
+    private static void heapifyHelper(int[] list, int pos) {
+        int left = 2 * pos + 1;
+        int right = 2 * pos + 2;
+        if (left >= list.length) return;
+        int newPos = left;
+        if (right < list.length) {
+            if (list[right] > list[left]) {
+                newPos = right;
+            }
+        }
+        if (list[newPos] > list[pos]) {
+            int temp = list[newPos];
+            list[newPos] = list[pos];
+            list[pos] = temp;
+            heapifyHelper(list, newPos);
+        }
+    }
+
+    public static void heapSort(int[] arr){
+        heapify(arr);
+        heapSortHelper(arr, arr.length);
+    }
+    public static void heapSortHelper(int[] arr, int stop){
+        if(stop == 1)
+            return;
 
     }
-    static void quicksort(int[] arr, int start, int stop){
-    
+
+    public static int func(int z){
+        int n = z/3;
+        return n;
     }
 	
-    public static void bucket(){
-	/*
-	 *
-	 * 
-	 *
-	 */
+    public static void bucket(int[] arr, int n){
 
+    }
+
+    public static int[] counting(int[] arr){
+        int max = arr[0];
+        for(int x: arr){
+            if(x > max){
+                max = x;
+            }
+        }
+        int[] cArr = new int[max+1];
+
+        for (int i = 0; i < arr.length; i++)
+            cArr[arr[i]]++;
+
+        for (int i = 1; i <= max; i++)
+            cArr[i] += cArr[i - 1];
+
+        int[] fin = new int[arr.length];
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            fin[cArr[arr[i]] - 1] = arr[i];
+            cArr[arr[i]]--;
+        }
+
+        return fin;
     }
 
     public static void main(String[] args) {
-        int[] arr = {8,4,5,2,1,3,6,7};
+        int[] arr = {6,8,7,5,2,3,1,4};
         for (int x : arr) {
             System.out.println(x);
         }
 
         System.out.println("[");
+        arr = counting(arr);
 
         for (int x : arr) {
-            System.out.println(x);
+            System.out.print(x + " ");
         }
+        System.out.println("[");
 
 
     }
