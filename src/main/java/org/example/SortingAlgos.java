@@ -1,4 +1,5 @@
 package org.example;
+import java.util.*;
 /*
 Iterative Comparison Sorts
 Bubble :
@@ -239,8 +240,35 @@ public class SortingAlgos {
             quicksort(arr, start, pivot - 1);
             quicksort(arr, pivot + 1, stop);
         }
+    }static public void dequeue(int[] arr, int stop){
+        if(stop == 0){return;}
+        int temp = arr[0];
+        arr[0] = arr[stop];
+        arr[stop] = temp;
+        int i = 0;
+        int largerChild = largerChild(arr, i);
+        while(largerChild < stop && arr[i] < arr[largerChild]) {
+            temp = arr[i];
+            arr[i] = arr[largerChild];
+            arr[largerChild] = temp;
+            i = largerChild;
+            largerChild = largerChild(arr, i);
+        }
+        dequeue(arr, stop-1);
     }
 
+    static private int largerChild(int[] arr, int pos) {
+        int left = pos*2+1;
+        int right = pos*2+2;
+        if (left >= arr.length) return -1;
+        int newPos = left;
+        if (right < arr.length) {
+            if (arr[right] > arr[(left)]) {
+                newPos = right;
+            }
+        }
+        return newPos;
+    }
     public static int[] heapify(int[] list) {
         for (int i = list.length/2 - 1; i >= 0; i--) {
             heapifyHelper(list, i);
@@ -268,21 +296,29 @@ public class SortingAlgos {
 
     public static void heapSort(int[] arr){
         heapify(arr);
-        heapSortHelper(arr, arr.length);
-    }
-    public static void heapSortHelper(int[] arr, int stop){
-        if(stop == 1)
-            return;
-
+        dequeue(arr, arr.length-1);
     }
 
-    public static int func(int z){
-        int n = z/3;
-        return n;
+    public static int count(int[] array) {
+        int c = 0;
+        for(Object el: array) { if(el != null) c++; }
+        return c;
     }
+
 	
-    public static void bucket(int[] arr, int n){
-
+    public static int[][] bucket(int[] arr){
+        int max = arr[0];
+        for(int x: arr){
+            if(x > max){
+                max = x;
+            }
+        }
+        int n = max/3;
+        int[][] buckets = new int[max][arr.length];
+        for(int x : arr){
+            buckets[x/3][count(buckets[x/3]) - 1] = x;
+        }
+        return
     }
 
     public static int[] counting(int[] arr){
@@ -297,14 +333,15 @@ public class SortingAlgos {
         for (int i = 0; i < arr.length; i++)
             cArr[arr[i]]++;
 
-        for (int i = 1; i <= max; i++)
-            cArr[i] += cArr[i - 1];
 
         int[] fin = new int[arr.length];
+        int y = 0;
 
-        for (int i = arr.length - 1; i >= 0; i--) {
-            fin[cArr[arr[i]] - 1] = arr[i];
-            cArr[arr[i]]--;
+        for (int i = 0; i < cArr.length; i++) {
+            for(int x = 0; x < cArr[i]; x++){
+                fin[y] = i;
+                y++;
+            }
         }
 
         return fin;
@@ -313,14 +350,17 @@ public class SortingAlgos {
     public static void main(String[] args) {
         int[] arr = {6,8,7,5,2,3,1,4};
         for (int x : arr) {
-            System.out.println(x);
+            System.out.print(x + " ");
         }
 
         System.out.println("[");
-        arr = counting(arr);
+        ArrayList<ArrayList<Integer>> z = bucket(arr);
 
-        for (int x : arr) {
-            System.out.print(x + " ");
+        for (ArrayList<Integer> i: z ) {
+            System.out.println("[");
+            for (int x : i) {
+                System.out.print(x + " ");
+            }
         }
         System.out.println("[");
 
