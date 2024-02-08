@@ -301,7 +301,7 @@ public class SortingAlgos {
 
     public static int count(int[] array) {
         int c = 0;
-        for(Object el: array) { if(el != null) c++; }
+        for(int el: array) { if(el != 0) c++; }
         return c;
     }
 
@@ -316,9 +316,12 @@ public class SortingAlgos {
         int n = max/3;
         int[][] buckets = new int[max][arr.length];
         for(int x : arr){
-            buckets[x/3][count(buckets[x/3]) - 1] = x;
+            buckets[x/3][count(buckets[x/3])] = x;
         }
-        return
+        for(int[] bucket : buckets){
+            insertion(bucket);
+        }
+        return buckets;
     }
 
     public static int[] counting(int[] arr){
@@ -354,9 +357,9 @@ public class SortingAlgos {
         }
 
         System.out.println("[");
-        ArrayList<ArrayList<Integer>> z = bucket(arr);
+        int[][] z = bucket(arr);
 
-        for (ArrayList<Integer> i: z ) {
+        for (int[] i: z ) {
             System.out.println("[");
             for (int x : i) {
                 System.out.print(x + " ");
