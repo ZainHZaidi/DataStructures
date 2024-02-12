@@ -211,10 +211,6 @@ public class sortingOutSorting {
 
 
     static int partition(int[] arr, int start, int stop, int pivot){
-        for (int x : arr) {
-            System.out.println(x + " " + 1);
-        }
-        System.out.println("[" + " " + start + " " + stop + " " + arr[pivot]);
         int temp = arr[pivot];
         arr[pivot] = arr[stop];
         arr[stop] = temp;
@@ -361,7 +357,6 @@ public class sortingOutSorting {
                 int[] arr = new int[n];
                 String s = in.next();
                 String[] line = s.split(",");
-                System.out.println(line[0]);
                 for (int j = 0; j < n; j++){
                     arr[j] = Integer.valueOf(line[j]);
                 }
@@ -384,8 +379,9 @@ public class sortingOutSorting {
     }
 
     public static long measureTime(int[] arr) {
+        int[] z = deepCopy(arr);
         long start = System.nanoTime();
-        bubble(deepCopy(arr));
+        bucket(z);
         long end = System.nanoTime();
         return end - start;
     }
@@ -410,25 +406,24 @@ public class sortingOutSorting {
 
 
     public static void main(String[] args) {
-        //creating int[][] of the arrays using get arrays from the specfic path
-        String[] paths = {"/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays10.txt",
-                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays50.txt",
-                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays100.txt",
-                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays500.txt",
-                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays1000.txt",
-                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays5000.txt"
-        };
-
-        //creating long[] to store times
+        //initializing paths and times
         long[] times = new long[6];
-
-        for(int i = 0; i < 6; i++){
-            int sum = 0;
-            int[][] arrays = getArrays(paths[i], 100);
-            for(int j = 0; j < arrays.length; j++){
-                int[] arr = arrays[j];
-                sum += measureTime(arr);
+        int[] ns = {10,50,100,500,1000,5000};
+        String[] paths = {
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays10.txt",
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays50.txt",
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays100.txt",
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays500.txt",
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays1000.txt",
+                "C:\\Users\\Zain\\IdeaProjects\\DataStructures\\src\\main\\java\\org\\example\\arrays5000.txt",
+        };
+        for(int j = 0; j < 6; j++){
+            int[][] arrays = getArrays(paths[j], ns[j]);
+            long sum = 0;
+            for(int i = 0; i < arrays.length; i++){
+                sum += measureTime(arrays[i]);
             }
+            System.out.println(sum);
         }
     }
 }
