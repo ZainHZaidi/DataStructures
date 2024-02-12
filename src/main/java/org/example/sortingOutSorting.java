@@ -1,5 +1,4 @@
 package org.example;
-import java.util.*;
 /*
 Iterative Comparison Sorts
 Bubble :
@@ -17,8 +16,11 @@ Counting Sort
 Bucket Sort
 
  */
+import java.util.*;
+import java.io.*;
+import java.time.*;
 
-public class SortingAlgos {
+public class sortingOutSorting {
 
     public static void bubble(int[] arr){
         Boolean swapped = false;
@@ -350,24 +352,84 @@ public class SortingAlgos {
         return fin;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {6,8,7,5,2,3,1,4};
-        for (int x : arr) {
-            System.out.print(x + " ");
+    public static int[][] getArrays(String fileName, int n){
+        //open a scanner for the file passed in
+        try{
+            Scanner in = new Scanner(new File(fileName));
+            int[][] output = new int[100][n];
+            for (int i = 0; i < 100; i++){
+                int[] arr = new int[n];
+                String s = in.next();
+                String[] line = s.split(",");
+                System.out.println(line[0]);
+                for (int j = 0; j < n; j++){
+                    arr[j] = Integer.valueOf(line[j]);
+                }
+                output[i] = arr;
+            }
+            in.close();
+            return output;
         }
+        catch(Exception e){ System.out.println(e); }
+        return null;
+    }
 
-        System.out.println("[");
-        int[][] z = bucket(arr);
+    @SuppressWarnings("deprecation")
+    public static int[] deepCopy(int[] arr) {
+        int[] cpy = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            cpy[i] = arr[i];
+        }
+        return cpy;
+    }
 
-        for (int[] i: z ) {
-            System.out.println("[");
-            for (int x : i) {
-                System.out.print(x + " ");
+    public static long measureTime(int[] arr) {
+        long start = System.nanoTime();
+        bubble(deepCopy(arr));
+        long end = System.nanoTime();
+        return end - start;
+    }
+
+
+    public static void output(long[] data, String fileName){
+        // use this to output the average runtime for each size
+        // of a given algorithm
+        try{
+            File f = new File(fileName);
+            if (f.createNewFile()) System.out.println("created file");
+            else { System.out.println("File already exists");}
+            FileWriter write = new FileWriter(fileName);
+            for (int i = 0; i < data.length; i++){
+                write.write(Long.toString(data[i]));
+                write.write("\n");
+            }
+            write.close();
+        }
+        catch(Exception e) {System.out.println(e);}
+    }
+
+
+    public static void main(String[] args) {
+        //creating int[][] of the arrays using get arrays from the specfic path
+        String[] paths = {"/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays10.txt",
+                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays50.txt",
+                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays100.txt",
+                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays500.txt",
+                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays1000.txt",
+                        "/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example/arrays5000.txt"
+        };
+
+        //creating long[] to store times
+        long[] times = new long[6];
+
+        for(int i = 0; i < 6; i++){
+            int sum = 0;
+            int[][] arrays = getArrays(paths[i], 100);
+            for(int j = 0; j < arrays.length; j++){
+                int[] arr = arrays[j];
+                sum += measureTime(arr);
             }
         }
-        System.out.println("[");
-
-
     }
 }
 

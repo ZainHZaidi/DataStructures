@@ -1,0 +1,264 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ff590a1e-a9bb-4686-8665-9867b1ae56bb\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2V78L9WftakuRaKWLw5xU2n67tK\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\"\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ff590a1e-a9bb-4686-8665-9867b1ae56bb\" name=\"Changes\" comment=\"\" />\n      <created>1694175703942</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1694175703942</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,14 +4,33 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff590a1e-a9bb-4686-8665-9867b1ae56bb" name="Changes" comment="" />
++    <list default="true" id="ff590a1e-a9bb-4686-8665-9867b1ae56bb" name="Changes" comment="x">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DirGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DirGraph.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LinkedList.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/List.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Node.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="UPDATE_TYPE" value="REBASE" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2V78L9WftakuRaKWLw5xU2n67tK" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -19,13 +38,74 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false"
+-  }
+-}]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/zainzaidi/Downloads/DataStructures/src/main/java/org/example&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/src/main/java/org/example" />
++    </key>
++  </component>
++  <component name="RunManager" selected="Application.SortingAlgos">
++    <configuration name="DirGraph" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.DirGraph" />
++      <module name="DataStructures" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LinkedList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.LinkedList" />
++      <module name="DataStructures" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="SortingAlgos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.SortingAlgos" />
++      <module name="DataStructures" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
++      <module name="DataStructures" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.SortingAlgos" />
++        <item itemvalue="Application.DirGraph" />
++        <item itemvalue="Application.LinkedList" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -34,7 +114,44 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1694175703942</updated>
++      <workItem from="1694175705236" duration="12449000" />
++      <workItem from="1694698978151" duration="3724000" />
++      <workItem from="1697133264697" duration="7191000" />
++      <workItem from="1697922994370" duration="6992000" />
++      <workItem from="1699652613068" duration="112000" />
++      <workItem from="1700095805747" duration="16000" />
++      <workItem from="1703170595996" duration="1393000" />
++      <workItem from="1704997596551" duration="4257000" />
++      <workItem from="1705501096437" duration="5964000" />
++      <workItem from="1706025194358" duration="7072000" />
++      <workItem from="1706477148289" duration="1514000" />
++    </task>
++    <task id="LOCAL-00001" summary="x">
++      <created>1706478091074</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1706478091075</updated>
+     </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="x" />
++    <option name="LAST_COMMIT_MESSAGE" value="x" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\nimport Java.\n\npublic class Main {\n\n    public static String encode(String key, String word){\n        String newthing = \"\";\n        for(int i = 0; i < word.length(); i++){\n            newthing += (char)((int)word.charAt(i) + (int)key.charAt(i) - 97);\n        }\n        System.out.println(newthing);\n        return \"s\";\n    }\n\n\n    public static void main(String[] args) {\n        String key;\n        String word;\n        String keyOrg = key;\n        if (key.length() <= word.length()){\n            for(int i = 0; i < word.length() / key.length(); i++){\n                key = key + keyOrg;\n            }\n        }\n        encode(\"abcde\", \"hello\");\n    }\n}
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	
++++ b/src/main/java/org/example/Main.java	
+@@ -1,27 +1,70 @@
+ package org.example;
+-import Java.
++import java.util.*;
+ 
+ public class Main {
+-
++    //encodes according the vigener cypher by taking in the key and word as strings converting to char then int
++    //translating both numbers to their actual number amounts modulo 26 to adjust for being able to go around the letters in an overflow case and convert back to ascii
+     public static String encode(String key, String word){
++        String newthing = "";
++        System.out.println(key);
++        for(int i = 0; i < word.length(); i++){
++            newthing += (char)((((int)word.charAt(i) + (int)key.charAt(i) - 194) % 26) + 97);
++        }
++        return newthing;
++    }
++    //Decodes by doing the inverse of encode
++    public static String decode(String key, String word){
+         String newthing = "";
+         for(int i = 0; i < word.length(); i++){
+-            newthing += (char)((int)word.charAt(i) + (int)key.charAt(i) - 97);
++            newthing += (char)((((int)word.charAt(i) - (int)key.charAt(i) - 194) % 26) + 97);
++        }
++        return newthing.toUpperCase();
++    }
++    //iterates over the word and then inside of that iterates through the letters after the first letter selected,
++    // prints the substring between these two values
++    public static void AllPossibleSS(String word){
++        for(int i = 0; i < word.length(); i++){
++            for(int j = i; j < word.length() + 1; j++){
++                System.out.print(word.substring(i, j) + " ");
++            }
+         }
+-        System.out.println(newthing);
+-        return "s";
+     }
++    //implements the euclidean value using a third variable to copy over the value.
++    public static void EuclideanAlgo(int a, int b){
++        if(b > 0) {
++            if(a % b <= 0){
++                System.out.println("GCD: " + b);
++            }
++        }
++        if(b > 0){
++            EuclideanAlgo(b, a % b);
++        }
++    }
++
+ 
+ 
+     public static void main(String[] args) {
+-        String key;
+-        String word;
+-        String keyOrg = key;
++        EuclideanAlgo(210, 45);
++        // scanning word and key
++        Scanner in = new Scanner(System.in);
++        String key = in.next();
++        String word = in.next();
++        // making the key long enough for the case of key length < length of word
+         if (key.length() <= word.length()){
+-            for(int i = 0; i < word.length() / key.length(); i++){
+-                key = key + keyOrg;
++            for(int i = 0; i <= (word.length() / key.length()) + 1; i++){
++                key = key + key;
+             }
+         }
+-        encode("abcde", "hello");
++// printing encode and decode
++        System.out.println(encode(key,word));
++        System.out.println(decode(key,word));
++        // input
++        System.out.println("Enter a word to find all possible substrings");
++        word = in.next();
++        AllPossibleSS(word);
++        //input
++        System.out.println("Enter two numbers in decreasing order:");
++        int a = in.nextInt();
++        int b = in.nextInt();
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,468 @@
+Index: src/main/java/org/example/List.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npublic interface List<T> {\n\tComparable<T> get(int pos) throws Exception;\n\tint find(Comparable<T> o);\n\tint length();\n\tString toString();\n\t\n\tboolean set(Comparable<T> o, int pos) throws Exception;\n\tvoid add(Comparable<T> o);\n\tvoid insert(Comparable<T> o, int pos) throws Exception;\n\tComparable<T> remove(int pos); \n\tboolean remove(Comparable<T> o);\n\tvoid clear();\n\tvoid sort();\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/List.java b/src/main/java/org/example/List.java
+--- a/src/main/java/org/example/List.java	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/src/main/java/org/example/List.java	(date 1706534597530)
+@@ -1,3 +1,4 @@
++package org.example;
+ 
+ public interface List<T> {
+ 	Comparable<T> get(int pos) throws Exception;
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.example</groupId>\n    <artifactId>DataStructures</artifactId>\n    <version>1.0-SNAPSHOT</version>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <configuration>\n                    <source>17</source>\n                    <target>17</target>\n                </configuration>\n            </plugin>\n        </plugins>\n    </build>\n\n    <properties>\n        <maven.compiler.source>18</maven.compiler.source>\n        <maven.compiler.target>18</maven.compiler.target>\n    </properties>\n    \n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/pom.xml	(date 1706534597565)
+@@ -24,5 +24,5 @@
+         <maven.compiler.source>18</maven.compiler.source>
+         <maven.compiler.target>18</maven.compiler.target>
+     </properties>
+-    
++
+ </project>
+\ No newline at end of file
+Index: src/main/java/org/example/DirGraph.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\nimport java.util.*;\n\npublic class DirGraph {\n    private int[][] graph;\n\n    public DirGraph(int[][] g) {\n        this.graph = g;\n    }\n\n    public boolean hasCycle() {\n        // instantiating the visited array and current path array\n        ArrayList<Boolean> visited = new ArrayList<>();\n        ArrayList<Boolean> path = new ArrayList<>();\n        // setting all to false compared to the traditional approach of containing the nodes we have visited\n        // or are in our current path a true false list will be used\n        for (int i =0; i < graph.length; i++) {\n            visited.add(false);\n            path.add(false);\n        }\n        //starting a DFS from each node to check for cycles as that as a starting point\n        for (int i = 0; i < graph.length; i++) {\n            if (!visited.get(i) && helper(i, visited, path)) {\n                return true;\n            }\n        }\n        return false;\n    }\n    //Helper function which does the actual DFSing for each node\n    private boolean helper(int curr, ArrayList<Boolean> visited, ArrayList<Boolean> path) {\n        //if our current isnt visited set it to visited and add it to current path\n        if (!visited.get(curr)) {\n            visited.set(curr, true);\n            path.set(curr, true);\n            // do the same for the connected nodes if we hit something in our path return true\n            for (int con = 0; con < graph.length; con++) {\n                if (graph[curr][con] != 0) {\n                    if (!visited.get(con) && helper(con, visited, path)) {\n                        return true;\n                    } else if (path.get(con)) {\n                        return true;\n                    }\n                }\n            }\n        }\n        //if we've hit nothing in our path reset path and return false\n        path.set(curr, false);\n        return false;\n    }\n\n    public static void main(String[] args) {\n        //Creating graphs then creating dirGraphs then printing their hasCycle\n        int[][] graph1 ={{0, 4, 0, 5, 0},\n                {0, 0, 1, 0, 6},\n                {2, 0, 0, 3, 0},\n                {0, 1, 0, 2, 0},\n                {1, 0, 0, 4, 0}}\n\n                ;\n\n\n\n        int[][] graph2 = {{0, 1, 1, 0},\n                {0, 0, 1, 0},\n                {0, 0, 0, 1},\n                {0, 0, 0, 0}};\n\n\n        int[][] graph3 = {{0, 1, 1, 0},\n                {0, 0, 1, 0},\n                {1, 0, 0, 1},\n                {0, 0, 0, 0}};\n\n\n\n        DirGraph dirGraph1 = new DirGraph(graph1);\n        DirGraph dirGraph2 = new DirGraph(graph2);\n        DirGraph dirGraph3 = new DirGraph(graph3);\n\n        System.out.println(dirGraph1.hasCycle());\n        System.out.println(dirGraph2.hasCycle());\n        System.out.println(dirGraph3.hasCycle());\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/DirGraph.java b/src/main/java/org/example/DirGraph.java
+--- a/src/main/java/org/example/DirGraph.java	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/src/main/java/org/example/DirGraph.java	(date 1706534597578)
+@@ -1,5 +1,7 @@
+-package com.company;
++package org.example;
+ import java.util.*;
++//Zain Zaidi
++// DSA 2023
+ 
+ public class DirGraph {
+     private int[][] graph;
+@@ -50,11 +52,11 @@
+ 
+     public static void main(String[] args) {
+         //Creating graphs then creating dirGraphs then printing their hasCycle
+-        int[][] graph1 ={{0, 4, 0, 5, 0},
+-                {0, 0, 1, 0, 6},
+-                {2, 0, 0, 3, 0},
+-                {0, 1, 0, 2, 0},
+-                {1, 0, 0, 4, 0}}
++        int[][] graph1 ={{0, 1, 0, 1, 0},
++                {0, 0, 1, 0, 1},
++                {0, 0, 0, 0, 0},
++                {0, 1, 0, 0, 0},
++                {0, 0, 0, 1, 0}}
+ 
+                 ;
+ 
+Index: src/main/java/org/example/Node.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;public class Node {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Node.java b/src/main/java/org/example/Node.java
+--- a/src/main/java/org/example/Node.java	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/src/main/java/org/example/Node.java	(date 1706534597584)
+@@ -1,2 +1,31 @@
+-package org.example;public class Node {
++package org.example;
++
++public class Node<T> {
++	private Comparable<T> element;
++	private Node<T> next;
++	
++	Node(Comparable<T> elt, Node<T> next){
++		element = elt;
++		this.next = next;
++	}
++	
++	Node(Comparable<T> elt){
++		element = elt; 
++		next = null;
++	}
++	
++	Node(){
++		element = null;
++		next = null;
++	}
++	
++	public Node<T> getNext() { return next; }
++	
++	public Object getElt() { return element; }
++	
++	public void setNext(Node<T> nxt) { next = nxt; }
++	
++	public void setElt(Comparable<T> elt) { element = elt; }
++	public String toString() { return element.toString(); }
++	
+ }
+Index: src/main/java/org/example/LinkedList.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;public class LinkedList {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/LinkedList.java b/src/main/java/org/example/LinkedList.java
+--- a/src/main/java/org/example/LinkedList.java	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/src/main/java/org/example/LinkedList.java	(date 1706534597595)
+@@ -1,2 +1,263 @@
+-package org.example;public class LinkedList {
+-}
++package org.example;
++
++public class LinkedList<T> {
++    private Node<T> head;
++    private int size;
++    //defining size and head, the amount of nodes and first node respectively.
++
++    public LinkedList() {
++        head = new Node();
++    }
++    //Constructor for LinkedList, instantiates the head node.
++
++    public Comparable<T> get(int pos) throws IndexOutOfBoundsException {
++        if (pos < size) {
++            Node<T> curNode = head;
++            for (int i = 0; i < pos; i++) {
++                curNode = curNode.getNext();
++            }
++            //using the current node to get to the next node until curnode is the target node
++            return (Comparable<T>) curNode.getElt();
++            //returning the curnode.
++        }
++        throw new IndexOutOfBoundsException();
++        //throwing an IndexOutOfBounds Exception if the user tries to get an index greater or equal to than size.
++    }
++
++    public int find(Comparable<T> o) {
++        Node<T> curNode = head;
++        if (curNode.getElt().equals(o)) {
++            return 0;
++        }
++        //checking if head is the target node
++        for (int i = 0; i < size - 1; i++) {
++            curNode = curNode.getNext();
++            if (curNode.getElt().equals(o)) {
++                return i + 1;
++            }
++        }
++        //iterating through all the nodes of the list, checks if they are the target, if so returns i + 1 to account for the fact
++        //that at i = 0 we are looking at node 1 not head and so on
++        return -1;
++        //returning -1 if no value is found
++    }
++
++    public int length() {
++        return size;
++    }
++    //returning size, total amount of nodes.
++
++    public String toString() {
++        String string = "";
++        if(head == null){
++            return string;
++        }
++        Node<T> curNode = head;
++        string += curNode.getElt().toString();
++        //assigning head and the string then adding element of head to the string
++        for (int i = 0; i < size - 1; i++) {
++            curNode = curNode.getNext();
++            string += " " + curNode.getElt().toString();
++        }
++        //iterating through the list and adding every node's element to the list.
++        return string;
++        // returning string
++    }
++
++    boolean set(Comparable<T> o, int pos) throws IndexOutOfBoundsException {
++        if (pos < size) { // checking if the index is within the list
++            Node<T> curNode = head;
++            for (int i = 0; i < pos; i++) {
++                curNode = curNode.getNext();
++            }
++            //iterating till target node
++            curNode.setElt(o);
++            return true;
++            //setting to element and returning true
++        }
++        throw new IndexOutOfBoundsException();
++        //throwing exception if we are out of bounds
++    }
++
++    void add(Comparable<T> o) {
++        if (size == 0) {
++            head.setElt(o);
++            size++;
++        }
++        //checking if it's the first add or not if it is adding to head and incrementing size.
++        else {
++            Node<T> curNode = head;
++            for (int i = 0; i < size - 1; i++) {
++                curNode = curNode.getNext();
++            }
++            Node<T> newNode = new Node<T>(o);
++            curNode.setNext(newNode);
++            size++;
++            //otherwise iterating till the last element(size - 1 as we grab final position + 1) then setting that nodes next
++            //node to our new node and dding the element we want to new node then incrementing size.
++        }
++    }
++
++    void insert(Comparable<T> o, int pos) throws IndexOutOfBoundsException {
++        Node<T> newpos = head;
++        Node<T> curNode = head;
++        Node<T> newNode = new Node<T>(o);
++        //defining nodes
++        if (pos < size) { // checking we are within index
++            if (pos == 0) {
++                newNode.setNext(head);
++                head = newNode;
++                // if inserting at 0 case, which makes a new head and makes head node 1
++            } else if (pos == size - 1) {
++                this.add(o);
++                //if inserting to last node shortening to this.add(o) for explanation refer back to add
++            } else {
++                for (int i = 0; i < pos; i++) { //moving until we get to 1 before pos
++                    if (pos - i == 1) {
++                        newpos = curNode.getNext();
++                        curNode.setNext(newNode);
++                        newNode.setNext(newpos);
++                        size++;
++                        // if we get to right before pos assigning newpos to be the next node curnode's next to be newnode
++                        //newnodes next to be new pos inserting newnode in between curnode and the next node
++
++                    }
++                    curNode = curNode.getNext();
++                }
++            }
++        } else {
++            throw new IndexOutOfBoundsException();
++            //if pos out of bounds index out of bounds error
++        }
++    }
++
++    Comparable<T> remove(int pos) {
++        Node<T> curNode = head;
++        Node<T> targetNode = new Node();
++        for (int i = 0; i < pos; i++) {
++            if (i + 1 == pos) {
++                targetNode = curNode.getNext();
++                curNode.setNext(targetNode.getNext());
++                size--;
++                //iterating through until 1 before pos then getting target and setting current next to target next then
++                //decrementing size
++            }
++            curNode = curNode.getNext();
++        }
++        return (Comparable<T>) targetNode.getElt();
++        //returning the thing we removed
++    }
++
++    boolean remove(Comparable<T> o) {
++        boolean retval = false;
++        int pos = this.find(o);
++        if (pos >= 0) {
++            retval = true;
++            this.remove(pos);
++        }
++        return retval;
++        //finding the position of the element we want to remove removing it and setting return value to true
++        // if we don't find it setting return value to false then returning return value
++    }
++
++    void clear() {
++        head = null;
++        size = 0;
++        //erasing head node and letting garbage collection do the rest
++    }
++
++    void sort() {
++        for (int j = 0; j < size - 1; j++) {
++            for (int i = 0; i < size - 1; i++) {
++                Comparable<T> temp;
++                if (this.get(i).compareTo((T) (this.get(i + 1))) > 0) {
++                    temp = this.get(i);
++                    this.set(this.get(i + 1), i);
++                    this.set(temp, i + 1);
++                }
++            }
++        }
++        //bubble sorting the linked list
++
++    }
++        public static void main(String[] args) {
++            LinkedList<Integer> list = new LinkedList<Integer>();
++            // add
++            for (int i = 10; i >= 0; i--) {
++                list.add(i);
++            }
++            System.out.println(list);
++            // insert
++            try {
++                int i = 0;
++                while (i < list.length()) {
++                    list.insert(i * 3 + 10, i);
++                    i += 3;
++                }
++                System.out.println(list);
++                // adding to end
++                System.out.print("Shoud add 1000 to end ");
++                list.insert(1000, list.length());
++                System.out.println(list);
++                // adding to beginning
++                list.insert(-1000, 0);
++                System.out.print("Shoud add -1000 to beginning ");
++                System.out.println(list);
++
++            } catch (Exception E) {
++                System.out.println(E);
++            }
++            try {
++                System.out.print("Shoud output exception: ");
++                // testing bounds on insert
++                list.insert(10000, 10000);
++            } catch (Exception E) {
++                System.out.println(E);
++            }
++
++            System.out.println("Finding 19 - should output 4: " + list.find(19));
++            System.out.println("Finding 8293 - should output -1: " + list.find(8293));
++
++            try {
++                System.out.println("Getting 5 - should output 8: " + list.get(5));
++                System.out.println("Finding 8293 - should cause Out of Bounds ");
++                list.get(8293);
++            } catch (Exception E) {
++                System.out.println(E);
++            }
++
++            try {
++                System.out.println("Setting pos 0 to -15 " + list.set(-15, 0));
++                System.out.println(list);
++
++                System.out.println("Setting pos 12329 to -15: should cause error ");
++                list.set(-15, 12329);
++            } catch (Exception E) {
++                System.out.println(E);
++            }
++
++            //testing removes
++            try {
++                System.out.println("Remove position 5: should show 8 " + list.remove(5));
++                System.out.println(list);
++
++                System.out.println("Remove elt 5: should show true " + list.remove((Integer) 5));
++                System.out.println(list);
++
++                System.out.println("Remove elt 18492: should show false " + list.remove((Integer) 18492));
++                System.out.println(list);
++
++                System.out.println("Remove position 58: should cause error");
++
++                list.remove(58);
++            } catch (Exception E) {
++                System.out.println(E);
++            }
++            list.sort();
++            System.out.println("Printing sorted list: " + list);
++            list.clear();
++            System.out.println("Printing the cleared list: " + list);
++
++
++        }
++    }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ff590a1e-a9bb-4686-8665-9867b1ae56bb\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/SortingAlgos.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/SortingAlgos.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2V78L9WftakuRaKWLw5xU2n67tK\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"SortingAlgos\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.SortingAlgos\" />\n      <module name=\"DataStructures\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"org.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.SortingAlgos\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ff590a1e-a9bb-4686-8665-9867b1ae56bb\" name=\"Changes\" comment=\"\" />\n      <created>1694175703942</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1694175703942</updated>\n      <workItem from=\"1706487929298\" duration=\"1952000\" />\n      <workItem from=\"1706490862429\" duration=\"13854000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 68c1b74b57acd2c1ba785688ff6feddcf8e076c7)
++++ b/.idea/workspace.xml	(date 1707371355165)
+@@ -4,11 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ff590a1e-a9bb-4686-8665-9867b1ae56bb" name="Changes" comment="">
++    <list default="true" id="ff590a1e-a9bb-4686-8665-9867b1ae56bb" name="Changes" comment="x">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SortingAlgos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SortingAlgos.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DirGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DirGraph.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LinkedList.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/List.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Node.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -17,6 +19,7 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -27,11 +30,11 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "WebServerToolWindowFactoryState": "false"
++  }
++}]]></component>
+   <component name="RunManager">
+     <configuration name="SortingAlgos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.SortingAlgos" />
+@@ -62,7 +65,16 @@
+       <updated>1694175703942</updated>
+       <workItem from="1706487929298" duration="1952000" />
+       <workItem from="1706490862429" duration="13854000" />
++      <workItem from="1707229953525" duration="8090000" />
+     </task>
++    <task id="LOCAL-00001" summary="x">
++      <created>1707259329736</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1707259329736</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -79,4 +91,8 @@
+       </map>
+     </option>
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="x" />
++    <option name="LAST_COMMIT_MESSAGE" value="x" />
++  </component>
+ </project>
+\ No newline at end of file
