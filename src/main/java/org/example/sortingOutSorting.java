@@ -245,7 +245,7 @@ public class sortingOutSorting {
         arr[stop] = temp;
         int i = 0;
         int largerChild = largerChild(arr, i);
-        while(largerChild < stop && arr[i] < arr[largerChild]) {
+        while(largerChild >= 0 && largerChild < stop && arr[i] < arr[largerChild]) {
             temp = arr[i];
             arr[i] = arr[largerChild];
             arr[largerChild] = temp;
@@ -381,7 +381,7 @@ public class sortingOutSorting {
     public static long measureTime(int[] arr) {
         int[] z = deepCopy(arr);
         long start = System.nanoTime();
-        bucket(z);
+        biSelection(z);
         long end = System.nanoTime();
         return end - start;
     }
